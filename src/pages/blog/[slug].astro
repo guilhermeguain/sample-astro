@@ -2,20 +2,19 @@
 import { marked } from "marked";
 import dayjs from "dayjs";
 
-import { fetchApi } from "../../lib/strapi";
+import { fetchGraphQL } from "../../lib/strapi";
 
-import type { PostProps } from "../../types/post";
+import type { GetPostsGraphQlProps, PostProps } from "../../types/post";
 
 import Layout from "../../layouts/Layout.astro";
+import { getPostsQuery } from "../../queries/getPostsQuery";
 
 export async function getStaticPaths() {
-  const posts = await fetchApi<PostProps[]>({
-    endpoint: "posts",
-    query: {
-      populate: "*",
-    },
+  const postsData = await fetchGraphQL<GetPostsGraphQlProps>({
+    query: getPostsQuery,
     wrappedByKey: "data",
   });
+  const posts = postsData?.posts.data ?? [];
 
   return (
     posts?.map((post) => ({
