@@ -1,0 +1,49 @@
+---
+import type { GetPostsGraphQlProps } from "../../types/post";
+
+import { fetchGraphQL } from "../../lib/strapi";
+
+import { getPostsQuery } from "../../queries/getPostsQuery";
+
+import PostCard from "../../components/PostCard.astro";
+
+import Layout from "../../layouts/Layout.astro";
+
+const postsData = await fetchGraphQL<GetPostsGraphQlProps>({
+  query: getPostsQuery,
+  wrappedByKey: "data",
+});
+const posts = postsData.posts.data;
+---
+
+<Layout title="Welcome to Astro." description="Home description">
+  <main>
+    <ul class="posts">
+      {posts.map((post) => <PostCard {...post} />)}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .posts {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    list-style: none;
+  }
+</style>
