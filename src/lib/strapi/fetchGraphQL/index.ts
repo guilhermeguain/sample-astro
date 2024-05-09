@@ -9,8 +9,12 @@ export async function fetchGraphQL<T>({
   query,
   wrappedByKey,
   wrappedByList,
-}: FetchGraphQlProps): Promise<T> {
-  const url = new URL(`${import.meta.env.STRAPI_URL}/graphql`);
+}: FetchGraphQlProps): Promise<T | undefined> {
+  const strapiUrl = import.meta.env.STRAPI_URL;
+
+  if (!strapiUrl) return undefined;
+
+  const url = new URL(`${strapiUrl}/graphql`);
 
   const response = await fetch(url, {
     method: "POST",

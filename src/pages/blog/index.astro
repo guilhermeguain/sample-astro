@@ -13,7 +13,7 @@ const postsData = await fetchGraphQL<GetPostsGraphQlProps>({
   query: getPostsQuery,
   wrappedByKey: "data",
 });
-const posts = postsData.posts.data;
+const posts = postsData?.posts.data ?? [];
 ---
 
 <Layout title="Welcome to Astro." description="Home description">

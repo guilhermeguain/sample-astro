@@ -17,10 +17,12 @@ export async function getStaticPaths() {
     wrappedByKey: "data",
   });
 
-  return posts.map((post) => ({
-    params: { slug: post.attributes.slug },
-    props: post,
-  }));
+  return (
+    posts?.map((post) => ({
+      params: { slug: post.attributes.slug },
+      props: post,
+    })) ?? []
+  );
 }
 type Props = PostProps;
 

@@ -13,12 +13,16 @@ export async function fetchApi<T>({
   query,
   wrappedByKey,
   wrappedByList,
-}: FetchApiProps): Promise<T> {
+}: FetchApiProps): Promise<T | undefined> {
   if (endpoint.startsWith("/")) {
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+  const strapiUrl = import.meta.env.STRAPI_URL;
+
+  if (!strapiUrl) return undefined;
+
+  const url = new URL(`${strapiUrl}/api/${endpoint}`);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
