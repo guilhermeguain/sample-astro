@@ -43,7 +43,7 @@ const content = post.attributes.content;
       >
         <img
           class="m-auto mb-8"
-          src={`${import.meta.env.STRAPI_URL}${postImageAttributes.url}`}
+          src={`${import.meta.env.PUBLIC_STRAPI_URL}${postImageAttributes.url}`}
           alt={postImageAttributes.alternativeText}
           width={postImageAttributes.width}
           height={postImageAttributes.height}
@@ -56,12 +56,7 @@ const content = post.attributes.content;
         >
           <span
             >Publicado em: {
-              dayjs(post.attributes.publishedAt).format("MM:HH DD/MM/YYYY")
-            }</span
-          >
-          <span
-            >Atualizado em: {
-              dayjs(post.attributes.updatedAt).format("MM:HH DD/MM/YYYY")
+              dayjs(post.attributes.publishedAt).format("DD/MM/YYYY")
             }</span
           >
         </div>

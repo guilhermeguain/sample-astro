@@ -6,7 +6,7 @@ import type { GetPostsGraphQlProps } from "@/lib/strapi/types";
 
 import Layout from "@/layouts/Layout.astro";
 
-import PostCard from "@/components/PostCard.astro";
+import { PostsGrid } from "@/components/PostsGrid";
 
 const postsData = await fetchGraphQL<GetPostsGraphQlProps>({
   query: getPostsQuery,
@@ -18,15 +18,7 @@ const posts = postsData?.posts.data ?? [];
 <Layout title="Welcome to Astro." description="Home description">
   <main>
     <div class="max-w-7xl m-auto">
-      <ul class="flex flex-wrap flex-row justify-center gap-6">
-        {
-          posts.map((post) => (
-            <li class="max-w-80">
-              <PostCard {...post} />
-            </li>
-          ))
-        }
-      </ul>
+      <PostsGrid client:load posts={posts} />
     </div>
   </main>
 </Layout>

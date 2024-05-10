@@ -18,7 +18,7 @@ export async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const strapiUrl = import.meta.env.STRAPI_URL;
+  const strapiUrl = import.meta.env.PUBLIC_STRAPI_URL;
 
   if (!strapiUrl) return undefined;
 

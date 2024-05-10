@@ -10,7 +10,7 @@ export async function fetchGraphQL<T>({
   wrappedByKey,
   wrappedByList,
 }: FetchGraphQlProps): Promise<T | undefined> {
-  const strapiUrl = import.meta.env.STRAPI_URL;
+  const strapiUrl = import.meta.env.PUBLIC_STRAPI_URL;
 
   if (!strapiUrl) return undefined;
 
