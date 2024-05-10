@@ -2,12 +2,12 @@
 import { marked } from "marked";
 import dayjs from "dayjs";
 
-import { fetchGraphQL } from "../../lib/strapi";
+import { getPostsQuery } from "@/queries/getPostsQuery";
 
-import type { GetPostsGraphQlProps, PostProps } from "../../lib/strapi/types";
+import { fetchGraphQL } from "@/lib/strapi";
+import type { GetPostsGraphQlProps, PostProps } from "@/lib/strapi/types";
 
-import Layout from "../../layouts/Layout.astro";
-import { getPostsQuery } from "../../queries/getPostsQuery";
+import Layout from "@/layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const postsData = await fetchGraphQL<GetPostsGraphQlProps>({

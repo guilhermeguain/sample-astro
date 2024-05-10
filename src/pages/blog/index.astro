@@ -1,13 +1,12 @@
 ---
-import type { GetPostsGraphQlProps } from "../../lib/strapi/types";
+import { getPostsQuery } from "@/queries/getPostsQuery";
 
-import { fetchGraphQL } from "../../lib/strapi";
+import { fetchGraphQL } from "@/lib/strapi";
+import type { GetPostsGraphQlProps } from "@/lib/strapi/types";
 
-import { getPostsQuery } from "../../queries/getPostsQuery";
+import Layout from "@/layouts/Layout.astro";
 
-import PostCard from "../../components/PostCard.astro";
-
-import Layout from "../../layouts/Layout.astro";
+import PostCard from "@/components/PostCard.astro";
 
 const postsData = await fetchGraphQL<GetPostsGraphQlProps>({
   query: getPostsQuery,
