@@ -18,32 +18,16 @@ const posts = postsData?.posts.data ?? [];
 
 <Layout title="Welcome to Astro." description="Home description">
   <main>
-    <ul class="posts">
-      {posts.map((post) => <PostCard {...post} />)}
-    </ul>
+    <div class="max-w-7xl m-auto">
+      <ul class="flex flex-wrap flex-row justify-center gap-6">
+        {
+          posts.map((post) => (
+            <li class="max-w-80">
+              <PostCard {...post} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </main>
 </Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .posts {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    list-style: none;
-  }
-</style>

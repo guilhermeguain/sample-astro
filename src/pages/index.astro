@@ -5,30 +5,14 @@ import Card from "../components/Card.astro";
 
 <Layout title="Welcome to Astro." description="Astro description">
   <main>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="/blog/"
-        title="Blog"
-        body="Dive into our tech blog for insights."
-      />
-    </ul>
+    <div class="max-w-7xl m-auto">
+      <ul role="list" class="link-card-grid">
+        <Card
+          href="/blog/"
+          title="Blog"
+          body="Dive into our tech blog for insights."
+        />
+      </ul>
+    </div>
   </main>
 </Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
-</style>
