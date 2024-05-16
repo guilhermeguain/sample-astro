@@ -24,21 +24,25 @@ export async function fetchApi<T>({
 
   const url = new URL(`${strapiUrl}/api/${endpoint}`);
 
-  if (query) {
-    Object.entries(query).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
-    });
-  }
-  const res = await fetch(url.toString());
-  let data = await res.json();
+  try {
+    if (query) {
+      Object.entries(query).forEach(([key, value]) => {
+        url.searchParams.append(key, value);
+      });
+    }
+    const res = await fetch(url.toString());
+    let data = await res.json();
 
-  if (wrappedByKey) {
-    data = data[wrappedByKey];
-  }
+    if (wrappedByKey) {
+      data = data[wrappedByKey];
+    }
 
-  if (wrappedByList) {
-    data = data[0];
-  }
+    if (wrappedByList) {
+      data = data[0];
+    }
 
-  return data as T;
+    return data as T;
+  } catch (error) {
+    console.log(error, "fetchApi error");
+  }
 }

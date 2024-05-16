@@ -16,25 +16,29 @@ export async function fetchGraphQL<T>({
 
   const url = new URL(`${strapiUrl}/graphql`);
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+      }),
+    });
 
-  let data = await response.json();
+    let data = await response.json();
 
-  if (wrappedByKey) {
-    data = data[wrappedByKey];
+    if (wrappedByKey) {
+      data = data[wrappedByKey];
+    }
+
+    if (wrappedByList) {
+      data = data[0];
+    }
+
+    return data as T;
+  } catch (error) {
+    console.log(error, "fetchGraphQL error");
   }
-
-  if (wrappedByList) {
-    data = data[0];
-  }
-
-  return data as T;
 }
