@@ -1,40 +1,18 @@
-# Astro Starter Kit: Basics
+# Astro.js Blog Project with Strapi Integration
 
-```sh
-npm create astro@latest -- --template basics
-```
+This project demonstrates a basic implementation of an Astro.js site that consumes data from Strapi, a headless CMS, to display a blog of posts. The site fetches blog posts stored in Strapi and dynamically generates pages to showcase each post.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🔑 Key Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Astro.js: A modern static site generator that allows you to build fast, content-focused websites with ease.
+- Strapi: An open-source headless CMS that provides a user-friendly interface for managing content and a powerful API for fetching that content.
+- Dynamic Content: Blog posts are fetched from Strapi and rendered on the site, allowing for easy content updates through Strapi's interface.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 📃 How it works
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+1. Setup Strapi: Ensure Strapi is running and accessible. Configure your content types for the blog posts (e.g., title, content, image, etc.).
+2. Fetch Data: Astro.js fetches data from Strapi using REST API or GraphQL during the build process.
+3. Generate Pages: Astro.js generates static HTML pages for each blog post, ensuring fast load times and SEO-friendly URLs.
 
 ## 🧞 Commands
 
